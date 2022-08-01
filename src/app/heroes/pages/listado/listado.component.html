@@ -3,9 +3,14 @@
 <br />
 
 <!--Cards-->
-<div class="flex-row flex-wrap">
-  <div class="20">
-    <mat-card *ngFor="let heroe of heroes">
+<div
+  fxLayout="row wrap"
+  fxLayout.xs="column"
+  fxLayoutAlign="center"
+  fxLayoutGap="20px"
+>
+  <div fxFlex="20" fxFlex.sm="30" fxFlex.md="20" fxFlex.lg="15" fxFlex.xl="10" *ngFor="let heroe of heroes">
+    <mat-card>
       <mat-card-header>
         <mat-card-title>{{ heroe.superhero }}</mat-card-title>
         <mat-card-subtitle>{{ heroe.alter_ego }}</mat-card-subtitle>

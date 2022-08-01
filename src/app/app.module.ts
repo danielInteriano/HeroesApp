@@ -10,7 +10,6 @@ import { HeroesModule } from './heroes/heroes.module';
 import { MaterialModule } from './material/material.module';
 import { Error404Component } from './shared/error404/error404.component';
 
-
 @NgModule({
   declarations: [AppComponent, Error404Component],
   imports: [
