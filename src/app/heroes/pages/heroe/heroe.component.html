@@ -1,1 +1,54 @@
-<p>heroe works!</p>
+<mat-grid-list cols="1" *ngIf="!heroe; else divHeroe">
+  <mat-grid-tile>
+    <mat-spinner></mat-spinner>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<ng-template #divHeroe fxFlex.md="3">
+  <div
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutGap="40px"
+    fxLayoutAlign="space-evenly center"
+  >
+    <div fxFlex="30">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{ heroe.superhero }}</mat-card-title>
+          <mat-card-subtitle>{{ heroe.alter_ego }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="heroe | imagen" />
+      </mat-card>
+    </div>
+    <div fxFlex="40">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{ heroe.publisher }}</mat-card-title>
+          <mat-card-subtitle>Publicador</mat-card-subtitle>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item
+              >Nombre ciudadano: {{ heroe.alter_ego }}</mat-list-item
+            >
+            <mat-list-item>Nombre heroe: {{ heroe.superhero }}</mat-list-item>
+            <mat-list-item
+              >Primera apación: {{ heroe.first_appearance }}</mat-list-item
+            >
+            <mat-list-item
+              >Publicador del comic: {{ heroe.publisher }}</mat-list-item
+            >
+            <mat-list-item>Id: {{ heroe.id }}</mat-list-item>
+            <mat-list-item>Personajes: {{ heroe.characters }}</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+        <mat-card-actions>
+          <button fxFlex mat-stroked-button (click)="regresar()">
+            REGRESAR
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</ng-template>
