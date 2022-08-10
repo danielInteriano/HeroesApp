@@ -12,3 +12,12 @@ export enum Publisher {
   DCComics = 'DC Comics',
   MarvelComics = 'Marvel Comics',
 }
+
+export interface hero {
+  id: string;
+  nombreHeroe: string;
+  nombreComun: string;
+  publicista: string;
+  primeraAparicion: string;
+  personajes: string;
+}
