@@ -26,4 +26,14 @@ export class HeroesService {
       `${this.baseUrl}/heroes?q=${termino}&_limit=6`
     );
   }
+
+  //método para guardar un heroe en DB
+  guardarHeroe(heroe: Heroe): Observable<Heroe> {
+    return this.http.post<Heroe>(`${this.baseUrl}/heroes`, heroe);
+  }
+
+  //método para actualizar un heroe
+  actualizarHeroe(heroe: Heroe): Observable<Heroe> {
+    return this.http.put<Heroe>(`${this.baseUrl}/heroes/${heroe.id}`, heroe);
+  }
 }
