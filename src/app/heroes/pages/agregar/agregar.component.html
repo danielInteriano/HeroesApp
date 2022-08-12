@@ -46,24 +46,42 @@
     </mat-form-field>
 
     <mat-divider></mat-divider>
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="guardar()"
-      *ngIf="!heroe.id"
-    >
-      <mat-icon>add</mat-icon>
-      Agregar
-    </button>
-    <button
-      mat-raised-button
-      color="basic"
-      (click)="actualizar()"
-      *ngIf="heroe.id"
-    >
-      <mat-icon>add</mat-icon>
-      actualizar
-    </button>
+    <hr />
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxLayout="column">
+        <button
+          mat-raised-button
+          color="basic"
+          (click)="actualizar()"
+          *ngIf="heroe.id"
+        >
+          <mat-icon>add</mat-icon>
+          actualizar
+        </button>
+      </div>
+      <div fxLayout="column">
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="eliminar()"
+          *ngIf="heroe.id"
+        >
+          <mat-icon>delete</mat-icon>
+          Eliminar
+        </button>
+      </div>
+      <div fxLayout="column">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="guardar()"
+          *ngIf="!heroe.id"
+        >
+          <mat-icon>add</mat-icon>
+          Agregar
+        </button>
+      </div>
+    </div>
   </div>
 
   <div fxFlex="50" fxLayout="column"><img [src]="heroe | imagen" /></div>

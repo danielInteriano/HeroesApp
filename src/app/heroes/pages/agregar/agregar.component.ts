@@ -88,4 +88,11 @@ export class AgregarComponent implements OnInit {
         .subscribe((heroe) => console.log('Actualizando', heroe));
     }
   }
+
+  //método para eliminar un heroe
+  eliminar() {
+    this.heroesService.eliminarHeroe(this.heroe.id!).subscribe((resp) => {
+      this.router.navigate(['/heroes']);
+    });
+  }
 }
