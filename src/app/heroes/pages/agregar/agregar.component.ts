@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 import { Heroe, Publisher } from '../../interfaces/heroe.interface';
 import { HeroesService } from '../../services/heroes.service';
 
@@ -40,7 +43,9 @@ export class AgregarComponent implements OnInit {
   constructor(
     private heroesService: HeroesService,
     private activatedRouter: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -71,6 +76,7 @@ export class AgregarComponent implements OnInit {
     if (!this.heroe.id) {
       this.heroesService.guardarHeroe(this.heroe).subscribe((heroe) => {
         this.router.navigate(['/heroes/editar', heroe.id]);
+        this.mostrarSnackBar('Registro creado');
       });
       this.limpiarHeroe();
     }
@@ -85,14 +91,29 @@ export class AgregarComponent implements OnInit {
     if (this.heroe.id) {
       this.heroesService
         .actualizarHeroe(this.heroe)
-        .subscribe((heroe) => console.log('Actualizando', heroe));
+        .subscribe((heroe) => this.mostrarSnackBar('Registro actualizado'));
     }
   }
 
   //método para eliminar un heroe
   eliminar() {
-    this.heroesService.eliminarHeroe(this.heroe.id!).subscribe((resp) => {
-      this.router.navigate(['/heroes']);
+    const dialog = this.dialog.open(ConfirmDialogComponent, {
+      width: '330px',
+      data: this.heroe,
+    });
+
+    dialog.afterClosed().subscribe((result) => {
+      this.heroesService.eliminarHeroe(this.heroe.id!).subscribe((resp) => {
+        this.router.navigate(['/heroes']);
+        this.mostrarSnackBar('Registro eliminado');
+      });
+    });
+  }
+
+  //método para mostrar un mensaje de confirmación alusuario cuando hace una acción
+  mostrarSnackBar(mensaje: string) {
+    this.snackBar.open(mensaje, 'ok!', {
+      duration: 2500,
     });
   }
 }

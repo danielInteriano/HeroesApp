@@ -11,6 +11,7 @@ import { HeroeComponent } from './pages/heroe/heroe.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ListadoComponent } from './pages/listado/listado.component';
 import { ImagenPipe } from './pipes/imagen.pipe';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ImagenPipe } from './pipes/imagen.pipe';
     ListadoComponent,
     HeroesTarjetaComponent,
     ImagenPipe,
+    ConfirmDialogComponent,
   ],
   imports: [
     CommonModule,

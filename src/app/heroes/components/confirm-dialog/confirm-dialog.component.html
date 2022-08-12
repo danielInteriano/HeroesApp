@@ -1,0 +1,10 @@
+<h1>Atención</h1>
+<hr />
+<p>
+  Esta intentando eliminar a {{ data.superhero }} <br /><br />
+  ¿Desea continuar?
+</p>
+<div fxLayout="row" fxLayoutGap="20px">
+  <button mat-raised-button color="warn" (click)="borrar()">Eliminar</button>
+  <button mat-raised-button (click)="cerrar()">Cancelar</button>
+</div>

@@ -1,5 +1,6 @@
 <h1>
-  Noveno Heroe <small>{{ heroe.superhero }}</small>
+  {{ heroe.id ? "Editando al" : "Creando al" }} heroe:
+  <small>{{ heroe.superhero }}</small>
 </h1>
 <mat-divider> </mat-divider>
 <div fxLayout="row" fxLayoutGap="40px" fxLayout.xs="column">
