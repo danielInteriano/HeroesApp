@@ -27,7 +27,8 @@
       <mat-icon> menu </mat-icon>
     </button>
     <span class="spacer"></span>
-    <button mat-button>Salir</button>
+    <span>{{ auth.usuario }}</span>
+    <button mat-button (click)="logout()">Salir</button>
   </mat-toolbar>
   <div class="container">
     <router-outlet></router-outlet>
